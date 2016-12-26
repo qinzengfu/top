@@ -62,23 +62,43 @@
         $("body").on('touchend', function (e) {
         	console.log(flag);
         	if(flag==false){
-        		console.log("scrollTop:"+$("body").scrollTop())
-//      		if($("body").scrollTop()<30){
+        		var _top=$("body").scrollTop();
+        		if($("body").scrollTop()<30){
 	        		if(deltaY<0){
-		            	$("body").animate({"top":"-300px"},1500).scrollTop(0)
+		            	move(false,200,_top)
 		          	}else if(deltaY>0){
-		            		$("body").animate({"top":0},1500)
+		          		move(true,0,_top)
+		            	//$("body").animate({"top":0},1500)
 		            }
-//		         }
-//      		if($("body").scrollTop()>0&&$("body").scrollTop()<=200){
-//      			console.log(flag);
-//      		}
+		         }
+        		if($("body").scrollTop()>=30&&$("body").scrollTop()<=200){
+        			console.log(flag);
+        		}
 	        	
 	            
         	}
         	
         });
-
+	function move(bool,num,_top){
+		var tbmove=setInterval(function(){
+			if(bool==true){
+				_top+=10;
+				if(_top>num){
+					_top=num;
+					clearInterval(tbmove());
+				}
+			}else{
+				_top-=10;
+				if(_top<num){
+					_top=num;
+					clearInterval(tbmove);
+				}
+			}
+			console.log(_top,num)
+			
+			$("body").scrollTop(_top);
+		},100)
+	}
 	
 </script>
 </html>
