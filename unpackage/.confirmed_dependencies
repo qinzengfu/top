@@ -2,10 +2,10 @@
 	"index.html": {
 		"resources": [
 			"js/touch.js",
-			"js/zepto.js",
 			"js/fx.js",
 			"changeposition.html",
-			"css/style.css"
+			"css/style.css",
+			"js/zepto.min.js"
 		],
 		"refer": [
 			"changeposition.html"
@@ -15,9 +15,9 @@
 		"resources": [
 			"js/fx.js",
 			"js/touch.js",
-			"js/zepto.js",
 			"css/style.css",
-			"index.html"
+			"index.html",
+			"js/zepto.min.js"
 		],
 		"refer": [
 			"index.html"

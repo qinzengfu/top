@@ -209,7 +209,8 @@
 					"js/fx.js",
 					null,
 					"changeposition.html",
-					"css/style.css"
+					"css/style.css",
+					"js/zepto.min.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -220,7 +221,8 @@
 					"js/touch.js",
 					"js/zepto.js",
 					"css/style.css",
-					"index.html"
+					"index.html",
+					"js/zepto.min.js"
 				],
 				"refer": [],
 				"priority": 0

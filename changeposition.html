@@ -4,7 +4,7 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <title></title>
-	    <script src="js/zepto.js"></script>
+	    <script src="js/zepto.min.js"></script>
 	    <script  src="js/touch.js"></script>
 	    <script src="js/fx.js"></script>
 	    <link rel="stylesheet" href="css/style.css"/>
@@ -21,7 +21,6 @@
 	
 	        $("body").on('touchstart', function (e) {
 	       	scrollt=$("body").scrollTop();
-	       	console.log(scrollt);
 	       		flag=false;
 	            var touch = e.touches[0];
 	            startPosition = {
@@ -46,23 +45,25 @@
 	        	flag=true;
 	        })
 	        $("body").on('touchend', function (e) {
-	        	console.log(flag);
 	        	if(flag==false){
-	        		console.log("scrollTop:"+$("body").scrollTop())
 		        		if(deltaY<0){
 		        			if(scrollt==0){
 		        				$("body").animate({"top":"-350px"},1500).scrollTop(0);
 		        			}
-			          	}else if(deltaY>0){
-			          		console.log(scrollt)
+			          }else if(deltaY>0){
 			          		if(scrollt==0){
 			          			$("body").animate({"top":0},1500).scrollTop(0);
 			          		}
 			            	
 			           }
+	        	}else{
+	        		var t_top=parseFloat($("body").css("top"));
+	        		var t_stop=$("body").scrollTop();
+	        		if(t_top==0&&t_stop<300){
+	        			$("body").animate({scrollTop:0});
+	        		}
 	        	}
 	        	scrollt=$("body").scrollTop();
-	        	console.log(scrollt);
 	        	
 	        });
 	

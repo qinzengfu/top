@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title></title>
-    <script src="js/zepto.js"></script>
+    <script src="js/zepto.min.js"></script>
     <script  src="js/touch.js"></script>
     <script src="js/fx.js"></script>
     <link rel="stylesheet" href="css/style.css" />
@@ -16,10 +16,11 @@
 </body>
 <script type="text/javascript">
 	
-        var startPosition, endPosition, deltaX, deltaY, moveLength,flag=false,j=0,scrolltop;
+        var startPosition, endPosition, startTime, endTime, deltaY, flag=false;
 
        $("body").on('touchstart', function (e) {
-       		
+       		startTime=e.timeStamp;
+       		console.log("satrt")
        		flag=false;
             var touch = e.touches[0];
             startPosition = {
@@ -29,64 +30,36 @@
         });
 
         $("body").on('touchmove', function (e) {
+        	console.log("move")
             var touch = e.touches[0];
             endPosition = {
                 x: touch.pageX,
                 y: touch.pageY
             }
-
-            deltaX = endPosition.x - startPosition.x;
             deltaY = endPosition.y - startPosition.y;
-            //moveLength = Math.sqrt(Math.pow(Math.abs(deltaX), 2) + Math.pow(Math.abs(deltaY), 2));
-            //console.log(moveLength);
+            
         });
-        
-        $("body").on("longTap",function(){
-        	flag=true;
-        })
         
         $("body").on('touchend', function (e) {
         	
+        	endTime=e.timeStamp;
+        	if(endTime-startTime>=750){
+        		flag=true;
+        	}
+        	console.log("end");
+        	console.log(deltaY)
         	if(flag==false){
-        		var _top=$("body").scrollTop();
-//      		if($("body").scrollTop()<30){
 	        		if(deltaY<0){
-		            	move(false,350,_top)
+		            	$("body").animate({'scrollTop':350},500);
+		            	$("body").scrollTop(350)
 		            	console.log($("body").scrollTop());
 		          	}else if(deltaY>0){
-		          		move(true,0,_top)
-		          		console.log($("body").scrollTop());
-		            	//$("body").animate({"top":0},1500)
-		            }
-//		         }
-//      		if($("body").scrollTop()>=30&&$("body").scrollTop()<=200){
-//      			console.log(flag);
-//      		}
-	        	
-	            
+		          		$("body").scrollTop(0)
+		          		$("body").animate({"scrollTop":0},500);
+		           }  
         	}
         	
         });
-	function move(bool,num,_top){
-		var tbmove=setInterval(function(){
-			console.log(num,_top)
-			if(bool==true){
-				_top+=10;
-				if(_top>num){
-					_top=num;
-					clearInterval(tbmove);
-				}
-			}else if(bool==false){
-				_top-=10;
-				if(_top<num){
-					_top=num;
-					clearInterval(tbmove);
-				}
-			}
-			
-			$("body").scrollTop(_top);
-		},500)
-	}
 	
 </script>
 </html>
