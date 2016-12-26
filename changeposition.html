@@ -1,129 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
-    <script src="js/zepto.js"></script>
-    <script  src="js/touch.js"></script>
-    <script src="js/fx.js"></script>
-    <!--<script type="text/javascript">
-    	console.log(window.plus);
-   		document.addEventListener('plusready', function(){
-   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-   			console.log(window)
-   		});
-   		
-    </script>-->
-   <style>
-   		*{margin:0;padding:0;}
-   		div{width:100%;}
-   		body{position: absolute;width:100%;}
-   		.top{height:300px;background: red;}
-   		.center{height:500px;background: yellow;}
-   		.bottom{height:500px; background: green;}
-   </style>
-</head>
-<body>
-	<div class="top"></div>
-	<div class="center"></div>
-	<div class="bottom"></div>
-</body>
-<script type="text/javascript">
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title></title>
+	    <script src="js/zepto.js"></script>
+	    <script  src="js/touch.js"></script>
+	    <script src="js/fx.js"></script>
+	    <link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body>
+		<div class="btn"><a href="index.html">返回主页面</a></div>
+		<div class="top"></div>
+		<div class="center"></div>
+		<div class="bottom"></div>
+	</body>
+	<script type="text/javascript">
+		
+	        var startPosition, endPosition, deltaX, deltaY, moveLength,flag=false,j=0,scrollt;
 	
-        var startPosition, endPosition, deltaX, deltaY, moveLength,flag=false,j=0;
-
-       $("body").on('touchstart', function (e) {
-       		flag=false;
-            var touch = e.touches[0];
-            startPosition = {
-                x: touch.pageX,
-                y: touch.pageY
-            }
-        });
-
-        $("body").on('touchmove', function (e) {
-            var touch = e.touches[0];
-            endPosition = {
-                x: touch.pageX,
-                y: touch.pageY
-            }
-
-            deltaX = endPosition.x - startPosition.x;
-            deltaY = endPosition.y - startPosition.y;
-            //moveLength = Math.sqrt(Math.pow(Math.abs(deltaX), 2) + Math.pow(Math.abs(deltaY), 2));
-            //console.log(moveLength);
-        });
-        
-        $("body").on("longTap",function(){
-        	flag=true;
-        })
-        
-        $("body").on('touchend', function (e) {
-        	console.log(flag);
-        	if(flag==false){
-        		console.log("scrollTop:"+$("body").scrollTop())
-//      		if($("body").scrollTop()<30){
-	        		if(deltaY<0){
-		            	$("body").animate({"top":"-300px"},1500).scrollTop(0)
-		          	}else if(deltaY>0){
-		            		$("body").animate({"top":0},1500)
-		            }
-//		         }
-//      		if($("body").scrollTop()>0&&$("body").scrollTop()<=200){
-//      			console.log(flag);
-//      		}
+	        $("body").on('touchstart', function (e) {
+	       	scrollt=$("body").scrollTop();
+	       	console.log(scrollt);
+	       		flag=false;
+	            var touch = e.touches[0];
+	            startPosition = {
+	                x: touch.pageX,
+	                y: touch.pageY
+	            }
+	        });
+	
+	        $("body").on('touchmove', function (e) {
+	            var touch = e.touches[0];
+	            endPosition = {
+	                x: touch.pageX,
+	                y: touch.pageY
+	            }
+	
+	            deltaX = endPosition.x - startPosition.x;
+	            deltaY = endPosition.y - startPosition.y;
+	            //moveLength = Math.sqrt(Math.pow(Math.abs(deltaX), 2) + Math.pow(Math.abs(deltaY), 2));
+	            //console.log(moveLength);
+	        });
+	        $("body").on("longTap",function(){
+	        	flag=true;
+	        })
+	        $("body").on('touchend', function (e) {
+	        	console.log(flag);
+	        	if(flag==false){
+	        		console.log("scrollTop:"+$("body").scrollTop())
+		        		if(deltaY<0){
+		        			if(scrollt==0){
+		        				$("body").animate({"top":"-350px"},1500).scrollTop(0);
+		        			}
+			          	}else if(deltaY>0){
+			          		console.log(scrollt)
+			          		if(scrollt==0){
+			          			$("body").animate({"top":0},1500).scrollTop(0);
+			          		}
+			            	
+			           }
+	        	}
+	        	scrollt=$("body").scrollTop();
+	        	console.log(scrollt);
 	        	
-	            
-        	}
-        	
-        });
-
+	        });
 	
-</script>
+		
+	</script>
 </html>
-	
-<!--	
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style media="screen">
-        body {
-            margin: 0;
-        }
-        .test {
-            background-color: blue;
-            width: 100vw;
-            height: 100vh;
-        }
-    </style>
-</head>
-<style>.delete { display: none; }
-	#items li{height: 50px;}
-</style>
-<script src="js/zepto.js"></script>
-<script src="js/touch.js"></script>
-<body>
-	<ul id=items>
-	  <li>List item 1 <span class=delete>DELETE</span></li>
-	  <li>List item 2 <span class=delete>DELETE</span></li>
-	</ul>
-</body>
-
-
-<script>
-// show delete buttons on swipe
-$('#items li').swipeUp(function(){
-  $('.delete').hide()
-  $('.delete', this).show()
-})
-// delete row on tapping delete button
-$('.delete').tap(function(){
-  $(this).parent('li').remove()
-})
-</script>
-</html>-->
-

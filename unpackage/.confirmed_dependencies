@@ -3,7 +3,24 @@
 		"resources": [
 			"js/touch.js",
 			"js/zepto.js",
-			"js/fx.js"
+			"js/fx.js",
+			"changeposition.html",
+			"css/style.css"
+		],
+		"refer": [
+			"changeposition.html"
+		]
+	},
+	"changeposition.html": {
+		"resources": [
+			"js/fx.js",
+			"js/touch.js",
+			"js/zepto.js",
+			"css/style.css",
+			"index.html"
+		],
+		"refer": [
+			"index.html"
 		]
 	}
 }

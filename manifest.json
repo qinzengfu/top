@@ -207,7 +207,20 @@
 					"js/touch.js",
 					"js/zepto.js",
 					"js/fx.js",
-					null
+					null,
+					"changeposition.html",
+					"css/style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"changeposition.html": {
+				"resources": [
+					"js/fx.js",
+					"js/touch.js",
+					"js/zepto.js",
+					"css/style.css",
+					"index.html"
 				],
 				"refer": [],
 				"priority": 0
