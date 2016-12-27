@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<style>
+			#comments{height: 1500px;width:100%;background: red;position: relative;}
+		</style>
+	</head>
+	<body>
+		<div id="comt">到底部</div>
+		<div id="comments"></div>
+	</body>
+	<script>
+		$('#comt').click(function(){
+		  $('html,body').animate({scrollTop:500}, 800);
+		});
+	</script>
+</html>

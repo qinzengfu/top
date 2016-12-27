@@ -17,10 +17,11 @@
 <script type="text/javascript">
 	
         var startPosition, endPosition, startTime, endTime, deltaY, flag=false;
-
-       $("body").on('touchstart', function (e) {
+		var scrollt,client_width,client_height;
+        $("body").on('touchstart', function (e) {
+        	scrollt=$("body").scrollTop();
        		startTime=e.timeStamp;
-       		console.log("satrt")
+       		console.log("satrt");
        		flag=false;
             var touch = e.touches[0];
             startPosition = {
@@ -41,7 +42,7 @@
         });
         
         $("body").on('touchend', function (e) {
-        	
+        	console.log(deltaY)
         	endTime=e.timeStamp;
         	if(endTime-startTime>=750){
         		flag=true;
@@ -50,13 +51,23 @@
         	console.log(deltaY)
         	if(flag==false){
 	        		if(deltaY<0){
-		            	$("body").animate({'scrollTop':350},500);
-		            	$("body").scrollTop(350)
-		            	console.log($("body").scrollTop());
+	        			if(scrollt==0){
+	        				$("body").scrollTo({toT:350},1000);
+	        			}
+		            	
 		          	}else if(deltaY>0){
-		          		$("body").scrollTop(0)
-		          		$("body").animate({"scrollTop":0},500);
+		          		if(scrollt<=350){
+		          			$("body").scrollTo({toT:0},1000);
+		          		}
+		          		
 		           }  
+        	}else{
+        		var curr_scroll=$("body").scrollTop();
+        		if(curr_scroll<=350&&scrollt<=350){
+        			$("body").scrollTo({toT:0},1000);
+        		}else if(curr_scroll<=350&&scrollt>350){
+        			$("body").scrollTo({toT:0},1000);
+        		}
         	}
         	
         });
