@@ -1,0 +1,78 @@
+<html><head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{padding:0;margin:0;}
+			.editor{height:500px;width: 80%;border:1px solid #000;margin:50px auto;}
+			.editor:focus{border:1px solid #000;}
+			#controller{position: absolute;display: flex;width:200px;height:30px;background: red;}
+			#controller dd{margin:0;padding:0;height:100%;width:25%;text-align: center;line-height: 30px;}
+			#link{position: absolute;width:200px;height:24px;background: blue;display: flex;}
+			#link dd{width:80%;height:100%;margin:0;text-align: center;align-self: center;}
+			#link dd input{display: inline-block;height:100%;width:100%;border:0;padding:0;margin-top:-1px;outline: none;}
+		</style>
+	</head>
+	<body>
+		<div class="editor" contenteditable="">
+			<div style="margin-bottom:20px;">发达国家扩绿付付付付付付付付付付付付付付付付付付付付付付付付付活动时间快快快快快的士速递的
+			付付付付付付付付付付付付付付付付付付付付付付付付付付付付付代付款啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿
+			绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿发的顶
+			顶顶顶的点点滴滴多多多多多多多多多多顶顶顶顶的点点滴滴多多多多多多多多多多</div>
+			<div>发达国家扩绿付付付付付付付付付付付付付付付付付付付付付付付付付活动时间快快快快快的士速递的
+			付付付付付付付付付付付付付付付付付付付付付付付付付付付付付代付款啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿
+			绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿发的顶
+			顶顶顶的点点滴滴多多多多多多多多多多顶顶顶顶的点点滴滴多多多多多多多多多多</div>
+		</div>
+		<dl id="controller" style="left: 542px; top: 182px;">
+			<dd role="italic">倾斜</dd>
+			<dd role="bold">加粗</dd>
+			<dd role="link">链接</dd>
+			<dd role="h">标题</dd>
+		</dl>
+		<dl id="link" style="display: none; top: 182px; left: 542px;">
+			<dd style="width:20%;">地址</dd>
+			<dd><input type="text" placeholder="链接地址"></dd>
+		</dl>
+	
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/fx.js"></script>
+	<script>
+		
+		$("dl").hide();
+		var range=null;
+		
+		$("body").mousedown(function(event){
+			
+		}).mouseup(function(event){
+			if(window.getSelection) {
+	            range = window.getSelection().getRangeAt(0);
+	        }
+	        else {
+	            range = document.selection.createRange();
+	        }
+			console.log(range)
+			if(range.endOffset-range.startOffset!==0){
+				$("#link").hide().css({"top":event.pageY,"left":event.pageX-100});
+				$("#controller").show().css({"top":event.pageY+10,"left":event.pageX-100}).animate({"top":event.pageY},300);
+			}
+		}).keydown(function(event){
+			var keycode=wvwnt.which;
+			if(keycode==13){
+				$("#link").hide()
+			}
+		})
+		$("dd").click(function(){
+			role=$(this).attr('role');
+			console.log(role=="link")
+			if(role=="link"){
+				$("#controller").hide();
+				$("#link").show();
+			}
+			
+		})
+//		$("dl").click(function(){
+//			$("dl").hide()
+//		})
+	</script>
+
+</body></html>
