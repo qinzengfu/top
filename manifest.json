@@ -210,7 +210,8 @@
 					null,
 					"changeposition.html",
 					"css/style.css",
-					"js/zepto.min.js"
+					"js/zepto.min.js",
+					"editor.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -223,6 +224,13 @@
 					"css/style.css",
 					"index.html",
 					"js/zepto.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"editor.html": {
+				"resources": [
+					"index.html"
 				],
 				"refer": [],
 				"priority": 0

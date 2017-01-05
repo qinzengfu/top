@@ -1,78 +1,152 @@
-<html><head>
+<!DOCTYPE html>
+<html>
+	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title></title>
 		<style>
 			body{padding:0;margin:0;}
-			.editor{height:500px;width: 80%;border:1px solid #000;margin:50px auto;}
-			.editor:focus{border:1px solid #000;}
-			#controller{position: absolute;display: flex;width:200px;height:30px;background: red;}
-			#controller dd{margin:0;padding:0;height:100%;width:25%;text-align: center;line-height: 30px;}
-			#link{position: absolute;width:200px;height:24px;background: blue;display: flex;}
-			#link dd{width:80%;height:100%;margin:0;text-align: center;align-self: center;}
+			dd{display: inline-block;}
+			.btn{text-align:center;align-self: center;margin-top:20px;}
+			.editor{height:auto;width: 80%;border:1px solid #000;margin:40px auto;}
+			.editor::selection{background: #fdbacf;}
+			.editor:focus{border:1px solid #000;outline: none;}
+			#controller{position: absolute;display: flex;width:200px;height:30px;background: red;flex-flow: wrap;}
+			#controller dd{height:100%;margin:0;padding:0;height:100%;width:23%;text-align: center;line-height: 30px;}
+			
+			#link{position: absolute;width:200px;height:24px;display: flex;background: #fff;}
+			#link dd{width:60%;height:100%;margin:0;text-align: center;align-self: center;align-items: center;}
 			#link dd input{display: inline-block;height:100%;width:100%;border:0;padding:0;margin-top:-1px;outline: none;}
+			#link dd span{transform:rotate(45deg);border-radius:50%;font-size:24px;display: inline-block;height:24px;width:24px;align-self: center;text-align:center;}
 		</style>
 	</head>
 	<body>
+		<div class="btn"><a href="index.html">返回跳转主页</a></div>
 		<div class="editor" contenteditable="">
-			<div style="margin-bottom:20px;">发达国家扩绿付付付付付付付付付付付付付付付付付付付付付付付付付活动时间快快快快快的士速递的
-			付付付付付付付付付付付付付付付付付付付付付付付付付付付付付代付款啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿
-			绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿发的顶
-			顶顶顶的点点滴滴多多多多多多多多多多顶顶顶顶的点点滴滴多多多多多多多多多多</div>
-			<div>发达国家扩绿付付付付付付付付付付付付付付付付付付付付付付付付付活动时间快快快快快的士速递的
-			付付付付付付付付付付付付付付付付付付付付付付付付付付付付付代付款啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿
-			绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿发的顶
-			顶顶顶的点点滴滴多多多多多多多多多多顶顶顶顶的点点滴滴多多多多多多多多多多</div>
+			<div style="margin-bottom:20px;">  朱自清（1898年11月22日－1948年8月12日），原名自华，字佩弦，
+				号秋实。原籍浙江绍兴，生于江苏东海，长大于江苏扬州，故称“我是扬州人”。北京大学毕业，曾任清华
+				大学中文系教授、系主任。中国现代诗人、散文作家。文笔清新，所著合编为朱自清全集。[1]为中国现
+				代散文增添了瑰丽的色彩，为建立中国现代散文全新的审美特征创造了具有中国民族特色的散文体制和风
+				格；主要作品有《雪朝》、《踪迹》、《背影》、《春》、《欧游杂记》、《你我》、《精读指导举隅》、
+				《略读指导举隅》、《国文教学》、《诗言志辨》、《新诗杂话》、《标准与尺度》、《论雅俗共赏》。</div>
+			<div>朱自清（1898年11月22日－1948年8月12日），原名自华，字佩弦，号秋实。原籍浙江绍兴，生于江苏东海，长大于江苏扬州，故称“我是扬州人”。北京大学毕业，曾任清华
+				大学中文系教授、系主任。中国现代诗人、散文作家。文笔清新，所著合编为朱自清全集。[1]为中国现
+				代散文增添了瑰丽的色彩，为建立中国现代散文全新的审美特征创造了具有中国民族特色的散文体制和风
+				格；主要作品有《雪朝》、《踪迹》、《背影》、《春》、《欧游杂记》、《你我》、《精读指导举隅》、
+				《略读指导举隅》、《国文教学》、《诗言志辨》、《新诗杂话》、《标准与尺度》、《论雅俗共赏》。</div>
 		</div>
-		<dl id="controller" style="left: 542px; top: 182px;">
+		<dl id="controller" >
 			<dd role="italic">倾斜</dd>
 			<dd role="bold">加粗</dd>
 			<dd role="link">链接</dd>
 			<dd role="h">标题</dd>
 		</dl>
-		<dl id="link" style="display: none; top: 182px; left: 542px;">
+		<dl id="link" style="display: none;">
 			<dd style="width:20%;">地址</dd>
-			<dd><input type="text" placeholder="链接地址"></dd>
+			<dd><input type="search" placeholder="链接地址"></dd>
+			<dd style="width:20%;"><span>+</span></dd>
 		</dl>
 	
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript" src="js/fx.js"></script>
+	<script type="text/javascript" src="js/touch.js" ></script>
 	<script>
 		
 		$("dl").hide();
 		var range=null;
-		
-		$("body").mousedown(function(event){
+		var selected;
+        if(isMobile()){
+        	
+        	$("body").on('touchstart',function(event){
 			
-		}).mouseup(function(event){
-			if(window.getSelection) {
-	            range = window.getSelection().getRangeAt(0);
-	        }
-	        else {
-	            range = document.selection.createRange();
-	        }
-			console.log(range)
-			if(range.endOffset-range.startOffset!==0){
-				$("#link").hide().css({"top":event.pageY,"left":event.pageX-100});
-				$("#controller").show().css({"top":event.pageY+10,"left":event.pageX-100}).animate({"top":event.pageY},300);
-			}
-		}).keydown(function(event){
-			var keycode=wvwnt.which;
-			if(keycode==13){
-				$("#link").hide()
-			}
-		})
-		$("dd").click(function(){
-			role=$(this).attr('role');
-			console.log(role=="link")
-			if(role=="link"){
+			}).on('touchend',function(event){
+				if(window.getSelection) {
+		            range = window.getSelection().getRangeAt(0);
+		        }
+		        else {
+		            range = document.selection.createRange();
+		        }
+				event=event.changedTouches[0];
+				console.log(range.endOffset-range.startOffset);
+				if(range.endOffset-range.startOffset!==0){
+					$("#link").hide().css({"top":event.pageY,"left":event.pageX-100});
+					$("#controller").show().css({"top":event.pageY+10,"left":event.pageX-100}).animate({"top":event.pageY},300);
+				}else{
+					$("#controller").hide();
+					$("#link").hide();
+				}
+			})
+			$("input").blur(function(){
+				$("#link").hide();
+			})
+			$("#controller dd").tap(function(){
+				role=$(this).attr('role');
 				$("#controller").hide();
-				$("#link").show();
-			}
-			
-		})
-//		$("dl").click(function(){
-//			$("dl").hide()
-//		})
+				switch(role){
+					case "link":$("#link").show();$("input").focus();break;
+					case "bold":;break;
+					case "h"   :;break;
+					case "italic":;break;
+					case "clear":;break;
+					default:console.log("无此规则！！！");break;
+				}
+				
+			})
+
+        }else{
+        	$("body").mousedown(function(event){
+				
+			}).mouseup(function(event){
+				if(window.getSelection) {
+		            range = window.getSelection().getRangeAt(0);
+		        }
+		        else {
+		            range = document.selection.createRange();
+		        }
+				
+				if(range.endOffset-range.startOffset!==0){
+					$("#link").hide().css({"top":event.pageY,"left":event.pageX-100});
+					$("#controller").show().css({"top":event.pageY+10,"left":event.pageX-100}).animate({"top":event.pageY},300);
+				}
+			})
+			$("input").keyup(function(event){
+				event=window.event||event;
+				var keycode=event.which;
+				if(keycode==13){
+					$("#link").hide();
+				}
+			})
+			$("#controller dd").click(function(){
+				role=$(this).attr('role');
+				$("#controller").hide();
+				switch(role){
+					case "link":$("#link").show();break;
+					case "bold":;break;
+					case "h"   :;break;
+					case "italic":;break;
+					case "clear":;break;
+					default:console.log("无此规则！！！");break;
+				}
+				
+			})
+        }
+		
+		function isMobile(){
+            var sUserAgent = navigator.userAgent.toLowerCase(); 
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";  
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";  
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";  
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";  
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";  
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";  
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";  
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";  
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {  
+               return true;
+            } else {  
+                return false;   
+            }
+        } 
 	</script>
 
 </body></html>

@@ -5,10 +5,12 @@
 			"js/fx.js",
 			"changeposition.html",
 			"css/style.css",
-			"js/zepto.min.js"
+			"js/zepto.min.js",
+			"editor.html"
 		],
 		"refer": [
-			"changeposition.html"
+			"changeposition.html",
+			"editor.html"
 		]
 	},
 	"changeposition.html": {
@@ -18,6 +20,14 @@
 			"css/style.css",
 			"index.html",
 			"js/zepto.min.js"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"editor.html": {
+		"resources": [
+			"index.html"
 		],
 		"refer": [
 			"index.html"

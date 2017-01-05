@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<HTML> 
+	<HEAD> 
+		<TITLE>数据查询</TITLE> 
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<Script > 
+			var conn = new ActiveXObject("ADODB.Connection"); 
+			conn.Open("DBQ=f://abc.mdb;DRIVER={Microsoft Access Driver (*.mdb)};"); 
+			var rs = new ActiveXObject("ADODB.Recordset"); 
+			var sql="select * from Student"; 
+			rs.open(sql, conn); 
+			var html=""; 
+			while(!rs.EOF) 
+			{  
+				html=html+rs.Fields("Id")+" "+rs.Fields("stuName"); 
+				rs.moveNext(); 
+			} 
+			document.write(html); 
+			rs.close(); 
+			rs = null; 
+			conn.close(); 
+			conn = null; 
+		</script> 
+	</HEAD> 
+	<BODY> 
+	</BODY> 
+</HTML> 
+
+<!--//添加数据库-->
+	
+<!--<HTML> 
+<HEAD> 
+<TITLE>增加操作</TITLE> 
+<script language="javascript"> 
+function addUser(id,stuName) 
+{ 
+//用 JavaScript 写服务器端连接数据库的代码示例 
+var conn = new ActiveXObject("ADODB.Connection"); 
+conn.Open("DBQ=F://abc.mdb;DRIVER={Microsoft Access Driver (*.mdb)};"); 
+var sql="insert into Student(ID,stuName) values("+id+",'"+stuName+"')"; 
+try{ 
+conn.execute(sql); 
+alert("添加成功"); 
+} 
+catch(e){ 
+document.write(e.description); 
+alert("添加失败~~~"); 
+} 
+conn.close(); 
+} 
+</script> 
+</HEAD> 
+<BODY> 
+<table width=100 border=1> 
+<tr bgcolor='#f4f4f4'> 
+<td>编号</td> 
+<td>姓名</td> 
+</tr> 
+<tr> 
+<td><input id="stuId" /></td> 
+<td><input id="stuName"/></td> 
+</tr> 
+</table> 
+<input name="1" type="button" value="添加" onclick="addUser(stuId.value,stuName.value)"/> 
+</BODY> 
+</HTML> -->
+
+
+<!--删除数据-->
+
+<!--<HTML> 
+<HEAD> 
+<TITLE>删除操作</TITLE> 
+<script language="javascript"> 
+function delStu(id) 
+{ 
+var conn = new ActiveXObject("ADODB.Connection"); 
+conn.Open("DBQ=F://abc.mdb;DRIVER={Microsoft Access Driver (*.mdb)};"); 
+var sql="delete from Student where Id=2"; 
+conn.execute(sql); 
+conn.close(); 
+conn = null; 
+alert("修改成功"); 
+} 
+</script> 
+</HEAD> 
+<BODY> 
+<input name="1" type="button" value="删除" onclick="delStu(1)"/> 
+</BODY> 
+</HTML> -->
+
+
+<!--修改数据-->
+
+<!--<HTML> 
+<HEAD> 
+<TITLE>修改操作 </TITLE> 
+</HEAD> 
+<script> 
+function updateUser(userId,userName) 
+{ 
+var conn = new ActiveXObject("ADODB.Connection"); 
+conn.Open("DBQ=F://abc.mdb;DRIVER={Microsoft Access Driver (*.mdb)};"); 
+var rs = new ActiveXObject("ADODB.Recordset"); 
+var sql="update Student set stuName='" + userName + "' where Id=" + userId + ""; 
+conn.execute(sql); 
+conn.close(); 
+conn = null; 
+alert("修改成功"); 
+} 
+</script> 
+<BODY> 
+<table width=100 border=1> 
+<tr bgcolor='#f4f4f4'> 
+<td>编号</td> 
+<td>姓名</td> 
+</tr> 
+<tr> 
+<td><input id="stuId" /></td> 
+<td><input id="stuName"/></td> 
+</tr> 
+</table> 
+<input name="1" type="button" value="修改" onclick="updateUser(stuId.value,stuName.value)"/> 
+</BODY> 
+</HTML> -->

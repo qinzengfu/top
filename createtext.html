@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script>
+		var fso, tf;
+//		fso = new ActiveXObject("Scripting.FileSystemObject")
+		fso = new ActiveXObject("Microsoft.XMLDOM");
+		
+		// 创建新文件
+		tf = fso.CreateTextFile("c:\\testfile.txt", true);
+		// 填写数据，并增加换行符
+		tf.WriteLine("Testing 1, 2, 3") ;
+		// 增加3个空行
+		tf.WriteBlankLines(3) ;
+		// 填写一行，不带换行符
+		tf.Write ("This is a test");
+		// 关闭文件
+		tf.Close();
+	</script>
+</html>
